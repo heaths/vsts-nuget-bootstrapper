@@ -1,7 +1,7 @@
 ﻿Param(
     [Parameter(Mandatory=$true)] [string] $outDir,
     [Parameter(Mandatory=$true)] [string] $downloadUrl,
-    [Parameter(Mandatory=$true)] [string] $downloadName,    
+    [Parameter(Mandatory=$true)] [string] $downloadName,
     [Parameter(Mandatory=$false)] [boolean] $unzip = $false
 )
 
@@ -29,7 +29,7 @@ if (Test-Path $etagFile)
     $headers.Add("If-None-Match", [System.IO.File]::ReadAllText($etagFile))
 }
 
-try 
+try
 {
     $response = Invoke-WebRequest -Headers $headers -Uri $downloadUrl -PassThru -OutFile $downloadPath -UseBasicParsing
 }
